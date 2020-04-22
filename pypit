@@ -1,0 +1,41 @@
+# import turtle module
+import turtle
+
+
+# functtion to draw triangles
+def triangle(t, length):
+    if length > 10:
+        for i in range(3):  # repeating 3 times
+            t.forward(length)   # moving t, forward length steps
+            t.left(120) #turn t, 120 degree left
+        triangle(t, length / 2) # call triangle with t and length / 2
+
+
+# function to draw nested triangles
+def nestedTriangle(t, length):
+    if length > 10:
+        for i in range(3):  # repeating 3 times
+            t.forward(length)   # moving t, forward length steps
+            t.left(120) #turn t, 120 degree left
+            triangle(t, length / 2) # call nestedTriangle with t and length / 2
+
+
+# driver function
+def main():
+    # length input from user
+    length = int(input('enter edge length: '))
+             
+    t = turtle.Turtle() # creating a turtle
+    t.color('green')    # set pen color to green
+    triangle(t, length) # call trianle
+
+    # moving pen forward 
+    t.penup()
+    t.forward(250)
+    t.pendown()
+
+    t.color('blue') # set pen color to blue
+    nestedTriangle(t, length)   # call nestedTriangle
+
+# calling main function
+main()
